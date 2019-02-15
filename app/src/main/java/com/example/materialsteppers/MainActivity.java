@@ -1,5 +1,6 @@
 package com.example.materialsteppers;
 
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -16,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NavigationView mNavigationView;
 
     private Fragment mVerticalStepperFragment = new vertical_stepper();
+    private Fragment mVerticalStepperAdapterFragment = new vertical_stepper_adapter();
 
 
 
@@ -66,6 +69,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.item_vertical_stepper:
                 replaceFragment(mVerticalStepperFragment);
                 return true;
+            case R.id.item_vertical_stepper_adapter:
+                replaceFragment(mVerticalStepperAdapterFragment);
+                return true;
+            case R.id.action_fork_on_github:
+                openWebsite();
+                return true;
             default:
                 return false;
         }
@@ -74,5 +83,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         private void replaceFragment(Fragment fragment){
             getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
         }
+
+    private void openWebsite() {
+        Toast.makeText(this, "https://github.com/jaycynth/MaterialSteppers", Toast.LENGTH_SHORT).show();
+    }
 
 }
