@@ -1,5 +1,6 @@
 package com.example.materialsteppers;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -19,7 +20,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private Fragment mVerticalStepperFragment = new vertical_stepper();
     private Fragment mVerticalStepperAdapterFragment = new vertical_stepper_adapter();
-
 
 
     @Override
@@ -80,12 +80,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-        private void replaceFragment(Fragment fragment){
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
-        }
+    private void replaceFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
+    }
 
     private void openWebsite() {
         Toast.makeText(this, "https://github.com/jaycynth/MaterialSteppers", Toast.LENGTH_SHORT).show();
+        String myLink = "https://github.com/jaycynth/MaterialSteppers";
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(myLink));
+        startActivity(browserIntent);
     }
+
 
 }
