@@ -21,7 +21,7 @@
 
 
             <item android:id="@+id/action_fork_on_github"
-                android:title="Fork on Github"
+                android:title="@string/fork_on_github"
                 android:icon="@drawable/ic_open_in_new_black_24dp"/>
 
         </menu>
